@@ -8,6 +8,12 @@
  - All other format will be rejected.
  - Filenames should be <yourName>.pdf and <yourName>.zip.
 
+## TODO 
+ - mediatheque.client.Client.java (2 methods left)
+ - mediatheque.Mediatheque.java
+ - mediatheque.FicheEmprunt.java
+ - mediatheque.LettreRappel.java
+
 ## Bugs
 
 ### Package mediatheque
