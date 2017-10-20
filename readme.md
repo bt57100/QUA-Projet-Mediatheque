@@ -9,9 +9,7 @@
  - Filenames should be <yourName>.pdf and <yourName>.zip.
 
 ## TODO 
- - mediatheque.client.Client.java (2 methods left)
- - mediatheque.FicheEmprunt.java
- - mediatheque.LettreRappel.java
+ - report
 
 ## Bugs
 
