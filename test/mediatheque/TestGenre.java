@@ -16,6 +16,10 @@ public class TestGenre {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Default nbEmprunts is 10 set to 0 
+	 * OR remove comment in constructor
+	 */
 	@Test
 	public void testGenre() {
 		Genre genre = new Genre("genre");
@@ -39,6 +43,9 @@ public class TestGenre {
 		assertEquals("NOK constructor", result, genre.hashCode());
 	}
 
+	/**
+	 * should increase one by one not two by two
+	 */
 	@Test
 	public void testEmprunter() {
 		Genre genre = new Genre("genre");

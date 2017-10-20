@@ -21,6 +21,11 @@ public class TestAudio {
 	public void tearDown() throws Exception {
 	}
 	
+	@Test
+	public void testGetStat() throws OperationImpossible, InvariantBroken {
+		assertEquals("NOK default nbEmpruntsTotal", 0, Audio.getStat());
+	}
+	
 	@Test 
 	public void testAudio() throws OperationImpossible, InvariantBroken {
 		Audio audio = new Audio("code", new Localisation("salle", "rayon"), "titre", "auteur", "annee", new Genre("genre"), "classification");
@@ -45,11 +50,6 @@ public class TestAudio {
 		assertEquals("NOK default nbEmpruntsTotal", 0, audio.getNbEmprunts());
 		audio.metEmpruntable();
 		audio.emprunter();
-	}
-	
-	@Test
-	public void testGetStat() throws OperationImpossible, InvariantBroken {
-		assertEquals("NOK default nbEmpruntsTotal", 0, Audio.getStat());
 	}
 
 	@Test

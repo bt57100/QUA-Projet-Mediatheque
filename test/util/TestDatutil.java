@@ -12,12 +12,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestDatutil {
-
+	
+	private SimpleDateFormat format;
 	private Date today;
 	private Date tomorrow;
 
 	@Before
 	public void setUp() throws Exception {
+		format = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar calendar = Calendar.getInstance();
 		today = Calendar.getInstance().getTime();
 		
@@ -64,7 +66,6 @@ public class TestDatutil {
 
 	@Test
 	public void testDateToSqlValues() {
-		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 		String todayString = format.format(today);
 		String dateString = Datutil.dateToSqlValues(today);
 		assertTrue("NOK dateToSqlValues", todayString.equals(dateString));
@@ -77,7 +78,6 @@ public class TestDatutil {
 	}
 
 	private boolean dateEquals(Date date1, Date date2) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(date1).equals(format.format(date2));
 	}
 }

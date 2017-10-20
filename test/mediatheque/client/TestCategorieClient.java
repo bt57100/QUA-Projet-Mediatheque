@@ -66,6 +66,9 @@ public class TestCategorieClient {
 		assertEquals("NOK modifierMax", 1, catClient.getNbEmpruntMax());
 	}
 
+	/**
+	 * should set the cotisation at the given value not 4
+	 */
 	@Test
 	public void testModifierCotisation() {
 		CategorieClient catClient = new CategorieClient("nom");

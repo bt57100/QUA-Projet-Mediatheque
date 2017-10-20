@@ -104,19 +104,15 @@ public class TestClient {
 		Client client = new Client("nom", "prenom", "adresse", catClient);
 	}
 
-	/**
-	 * remove ! new client shouldn't have used code reduc => failed
-	 * @throws OperationImpossible
-	 */
 	@Test
 	public void testClientStringStringStringCategorieClientInt() throws OperationImpossible {
-		CategorieClient catClient = new CategorieClient("catClient");
-		Client client = new Client("nom", "prenom", "adresse", catClient, 0);
+		CategorieClient catClient = new CategorieClient("catClient", 10, 1.0, 1.0, 1.0, true);
+		Client client = new Client("nom", "prenom", "adresse", catClient, 1);
 		assertTrue("NOK constructor", client.getNom().equals("nom"));
 		assertTrue("NOK constructor", client.getPrenom().equals("prenom"));
 		assertTrue("NOK constructor", client.getAdresse().equals("adresse"));
 		assertTrue("NOK constructor", client.getCategorie().equals(catClient));
-		assertEquals("NOK constructor", 0,client.getReduc());
+		assertEquals("NOK constructor", 1, client.getReduc());
 	}
 
 	@Test(expected=OperationImpossible.class)
@@ -169,22 +165,6 @@ public class TestClient {
 		assertFalse("NOK aDesEmpruntsEnCours", client.aDesEmpruntsEnCours());
 		client.emprunter();
 		assertTrue("NOK aDesEmpruntsEnCours", client.aDesEmpruntsEnCours());
-	}
-
-	//TODO avec des emprunts depasses
-	@Test
-	public void testPeutEmprunter() throws OperationImpossible {
-		CategorieClient catClient = new CategorieClient("catClient");
-		Client client = new Client("nom", "prenom", "adresse", catClient);
-		
-		assertFalse("NOK peutEmprunter", client.peutEmprunter());
-		assertTrue("NOK peutEmprunter", client.peutEmprunter());
-	}
-
-	//TODO
-	@Test
-	public void testEmprunterFicheEmprunt() {
-		fail("Not yet implemented");
 	}
 
 	/**
@@ -253,20 +233,6 @@ public class TestClient {
 		assertEquals("NOK restituer", 1, client.getNbEmpruntsEnCours());
 		client.restituer(false);
 		assertEquals("NOK restituer", 0, client.getNbEmpruntsEnCours());
-	}
-
-	//TODO Creer un emprunt en retard
-	@Test
-	public void testRestituerBooleanTrue() throws OperationImpossible {
-		CategorieClient catClient = new CategorieClient("catClient");
-		Client client = new Client("nom", "prenom", "adresse", catClient);
-		client.getCategorie().modifierMax(1);	
-		client.emprunter();
-		assertEquals("NOK restituer", 1, client.getNbEmpruntsEnCours());
-		assertEquals("NOK restituer", 1, client.getNbEmpruntsEnRetard());
-		client.restituer(true);
-		assertEquals("NOK restituer", 0, client.getNbEmpruntsEnCours());
-		assertEquals("NOK restituer", 0, client.getNbEmpruntsEnRetard());
 	}
 
 	@Test(expected=OperationImpossible.class)
