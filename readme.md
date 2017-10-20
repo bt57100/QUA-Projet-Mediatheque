@@ -58,7 +58,7 @@
  - l.290 emprunter():
  > nbEmpruntsTotal++; //should increment static nbEmpruntsTotal
  - l.300 marquer():
- > if(nbEmpruntsDepasses >= nbEmpruntsEnCours) && (nbEmpruntsEnCours != 0)	
+ > if(nbEmpruntsDepasses >= nbEmpruntsEnCours) && (nbEmpruntsEnCours != 0)  
  > //should cover the case more late borrow than current borrow + remove case current == 0
 
 ### Package mediatheque.document
