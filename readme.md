@@ -18,6 +18,26 @@
 
 ### Package mediatheque
 
+##### Mediatheque.class
+ - l.135 modifierGenre():
+ > if (g == null) // should throw exception not exist when null
+ - l.235 modifierLocalisation():
+ > Localisation inVector = chercherLocalisation(loc.getSalle(), loc.getRayon()); // should be (salle,rayon) not (rayon,rayon)
+ - l.471 metEmpruntable():
+ > doc.metEmpruntable(); // should set empruntable not consultable
+ - l.278 chercherCatClient():
+ > if (index >= 0) // should be return the value as soon as it is in the vector not only if it is at index 0
+ -modifierCatClient():
+ > // should either should modify c not co OR remove c from list, add co and return co not c
+ > if (!c.getNom().equals(name)) { c.modifierNom(name); }
+ > if (c.getNbEmpruntMax() != max) { c.modifierMax(max); }
+ > if (c.getCotisation() != cot) { c.modifierCotisation(cot); }
+ > if (c.getCoefDuree() != coefDuree) { c.modifierCoefDuree(coefDuree); }
+ > if (c.getCoefTarif() != coefTarif) { c.modifierCoefTarif(coefTarif);}
+ > if (c.getCodeReducUtilise() != codeReducUsed) { c.modifierCodeReducActif(codeReducUsed); }
+ - l.924 getClientAt():
+ > cl = null; // should return null if the vector is shorter than the given index
+
 ##### Genre.class
  - l. 20 default attribut: 
  > int nbEmprunts = 0; //default nbEmprunts should be 0 not 10
@@ -33,9 +53,7 @@
  >	cotisation = cot; //remove auto-set to 4
 
 ##### Client.class
- - l.103 constructor():
- > if(catClient.getCodeReducUtilise()) //remove ! new client have no code reduc
- - l.117 constructor(): catClient uninitialized may cause NullPointerException
+ - l.117 constructor(): catClient uninitialized may cause NullPointerException ?
  - l.188 getNbEmpruntsEnRetard():
  > return nbEmpruntsDepasses; // should return nbEmpruntsDepasses instead of 1
  - l.290 emprunter():
