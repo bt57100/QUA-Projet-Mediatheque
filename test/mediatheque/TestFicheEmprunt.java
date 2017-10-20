@@ -114,4 +114,22 @@ public class TestFicheEmprunt {
 		assertTrue("NOK changementCategorie", fiche.getDepasse());
 	}
 
+	/**
+	 * should call client.metAJourEmprunts()
+	 * @throws OperationImpossible
+	 * @throws InvariantBroken
+	 */
+	@Test(expected=OperationImpossible.class)
+	public void testChangementCategorieImpossible() throws OperationImpossible, InvariantBroken {
+		FicheEmprunt fiche = new FicheEmprunt(mediatheque, client, doc);
+		fiche.changementCategorie();
+		assertFalse("NOK changementCategorie", fiche.getDepasse());
+		Datutil.addAuJour(-1000);
+		fiche.setDateEmprunt(Datutil.dateDuJour());
+		Datutil.addAuJour(1000);
+		fiche.changementCategorie();
+		assertTrue("NOK changementCategorie", fiche.getDepasse());
+		fiche.changementCategorie();
+	}
+
 }

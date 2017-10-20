@@ -118,7 +118,6 @@ public class TestClient {
 	@Test(expected=OperationImpossible.class)
 	public void testClientStringStringStringCategorieClientIntImpossible() throws OperationImpossible {
 		CategorieClient catClient = new CategorieClient("catClient");
-		catClient.modifierCodeReducActif(true);
 		Client client = new Client("nom", "prenom", "adresse", catClient, 0);
 		assertEquals("NOK constructor", 0, client.getReduc());
 	}
