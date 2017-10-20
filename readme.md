@@ -27,7 +27,7 @@
  - l.278 chercherCatClient():
  > if (index >= 0) // should be return the value as soon as it is in the vector not only if it is at index 0
  - l.355 modifierCatClient():
- > // should either should modify c not co OR remove c from list, add co and return co not c
+ > // should either should modify c not co OR remove c from list, add co and return co not c  
  > if (!c.getNom().equals(name)) { c.modifierNom(name); }  
  > if (c.getNbEmpruntMax() != max) { c.modifierMax(max); }  
  > if (c.getCotisation() != cot) { c.modifierCotisation(cot); }  
