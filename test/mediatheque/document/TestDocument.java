@@ -97,7 +97,6 @@ public class TestDocument {
 		DocumentImpl doc = new DocumentImpl("code", new Localisation("salle", "rayon"), "titre", "auteur", "annee", null);
 	}
 
-	//TODO à vérifier cas où code==null impossible car erreur à la création et pas de setter
 	@Test
 	public void testHashCode() throws OperationImpossible {
         int result = 31 + "code".hashCode();
@@ -196,7 +195,6 @@ public class TestDocument {
 		doc.restituer();
 	}
 
-	//TODO Rendre empruntable
 	@Test
 	public void testInvariant() throws OperationImpossible {
 		DocumentImpl doc = new DocumentImpl("code", new Localisation("salle", "rayon"), "titre", "auteur", "annee", new Genre("genre"));
