@@ -10,7 +10,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import mediatheque.FicheEmprunt;
+import mediatheque.Genre;
+import mediatheque.Localisation;
+import mediatheque.Mediatheque;
 import mediatheque.OperationImpossible;
+import mediatheque.document.Document;
+import mediatheque.document.Livre;
+import util.InvariantBroken;
 
 public class TestClient {
 
@@ -211,16 +218,24 @@ public class TestClient {
 		client.marquer();
 	}
 
-	//TODO
 	@Test
-	public void testRestituerFicheEmprunt() throws OperationImpossible {
-		fail("Not yet implemented");
-	}
+	public void testRestituerFicheEmprunt() throws OperationImpossible, InvariantBroken {
+		Document doc = new Livre("code", new Localisation("salle", "rayon"), "titre", "auteur", "annee", new Genre("genre"), 1);
+		CategorieClient catClient = new CategorieClient("catClient");
+		Client client = new Client("nom", "prenom", "adresse", catClient);
+		Mediatheque mediatheque = new Mediatheque("nom");
+		mediatheque.ajouterGenre("genre");
+		mediatheque.ajouterLocalisation("salle", "rayon");
+		mediatheque.ajouterDocument(doc);
+		mediatheque.metEmpruntable("code");
+		mediatheque.ajouterCatClient("catClient", 1, 1.0, 1.0, 1.0, false);
+		mediatheque.inscrire("nom", "prenom", "adresse", "catClient", 0);
+		client.getCategorie().modifierMax(10);	
 
-	//TODO
-	@Test
-	public void testRestituerFicheEmpruntImpossible() throws OperationImpossible {
-		fail("Not yet implemented");
+		FicheEmprunt fiche = new FicheEmprunt(mediatheque, client, doc);
+		assertTrue("NOK restituer", client.aDesEmpruntsEnCours());
+		client.restituer(fiche);
+		assertFalse("NOK restituer", client.aDesEmpruntsEnCours());
 	}
 
 	@Test

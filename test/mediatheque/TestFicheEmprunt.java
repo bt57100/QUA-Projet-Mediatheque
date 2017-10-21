@@ -33,7 +33,8 @@ public class TestFicheEmprunt {
 		catClient = new CategorieClient("catClient", 10, 1.0, 1.0, 1.0, false);
 		client = new Client("nom", "prenom", "adresse", catClient);
 		doc = new Livre("code", new Localisation("salle", "rayon"), "titre", "auteur", "annee", new Genre("genre"), 1);	
-		mediatheque = new Mediatheque("nom");mediatheque.ajouterGenre("genre");
+		mediatheque = new Mediatheque("nom");
+		mediatheque.ajouterGenre("genre");
 		mediatheque.ajouterLocalisation("salle", "rayon");
 		mediatheque.ajouterDocument(doc);
 		mediatheque.metEmpruntable("code");
