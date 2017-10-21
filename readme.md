@@ -8,9 +8,6 @@
  - All other format will be rejected.
  - Filenames should be <yourName>.pdf and <yourName>.zip.
 
-## TODO 
- - report
-
 ## Bugs
 
 ### Package mediatheque
